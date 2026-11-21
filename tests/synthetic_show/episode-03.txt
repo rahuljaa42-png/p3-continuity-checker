@@ -1,0 +1,37 @@
+EPISODE NUMBER: 3
+EPISODE LOGLINE: A smooth stranger calling himself Elian Ross offers to buy the Okafor house in Harrowmeer.
+CONTINUITY NOTES: Elian Ross is the cover name Elias uses with the family.
+
+SCENE 1
+Scene Heading: INT. OKAFOR HOUSE - KITCHEN - DAY
+Scene Start: 00:00.00
+Scene End: 00:15.80
+
+**CAMERA:**
+Start: (00:00.00) | End: (00:02.50)
+Funeral flowers wilt on the table.
+
+**ELIAS (Charming):**
+Start: (00:02.50) | End: (00:06.68)
+"I'm Elian Ross. My company insures half the boats in Harrowmeer."
+
+**MAYA (Guarded):**
+Start: (00:06.68) | End: (00:10.48)
+"Then you know my father's boat was sabotaged, Mr. Ross."
+
+**ELIAS (Smiling):**
+Start: (00:10.48) | End: (00:15.80)
+"I know the house is worth more to me than it is to you."
+
+SCENE 2
+Scene Heading: EXT. GARDEN - NIGHT
+Scene Start: 00:15.80
+Scene End: 00:22.48
+
+**ACTION:**
+Start: (00:15.80) | End: (00:18.30)
+Tobias watches the stranger's car leave and dials a number.
+
+**TOBIAS (Whispering):**
+Start: (00:18.30) | End: (00:22.48)
+"He's here. Elian Ross. Just like you said he would be."

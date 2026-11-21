@@ -1,0 +1,45 @@
+EPISODE NUMBER: 2
+EPISODE LOGLINE: Harbourmaster Marta Lind hands Maya her father's red scarf, found tangled on the Greyfin.
+CONTINUITY NOTES: The red scarf is Samuel's; he wore it the night he vanished.
+
+SCENE 1
+Scene Heading: INT. HARBOUR OFFICE - DAY
+Scene Start: 00:00.00
+Scene End: 00:16.02
+
+**CAMERA:**
+Start: (00:00.00) | End: (00:02.50)
+Rows of logbooks. Rain streaks the window.
+
+**MARTA (Gruff):**
+Start: (00:02.50) | End: (00:05.92)
+"We pulled this off the Greyfin's propeller, Dr. Okafor."
+
+**ACTION:**
+Start: (00:05.92) | End: (00:08.42)
+Marta places a red wool scarf on the desk.
+
+**MAYA (Trembling):**
+Start: (00:08.42) | End: (00:12.60)
+"That's Dad's red scarf. He wore it the night he vanished."
+
+**MARTA (Quiet):**
+Start: (00:12.60) | End: (00:16.02)
+"Nobody in Harrowmere believes it was an accident, Maya."
+
+SCENE 2
+Scene Heading: EXT. CLIFF ROAD - DUSK
+Scene Start: 00:16.02
+Scene End: 00:26.50
+
+**ACTION:**
+Start: (00:16.02) | End: (00:18.52)
+Maya walks home with the red scarf wrapped around her wrist.
+
+**TOBIAS (Nervous):**
+Start: (00:18.52) | End: (00:23.46)
+"A man came asking about the house. Said he was from the insurer."
+
+**MAYA (Suspicious):**
+Start: (00:23.46) | End: (00:26.50)
+"What insurer sends someone before the funeral, Tobias?"

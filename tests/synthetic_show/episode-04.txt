@@ -1,0 +1,37 @@
+EPISODE NUMBER: 4
+EPISODE LOGLINE: Maya learns Tobias has been taking money from Elian Ross, and Aunt Martha takes her side.
+CONTINUITY NOTES: Tobias owes money to the man he knows as Elian Ross.
+
+SCENE 1
+Scene Heading: INT. BAKERY - MORNING
+Scene Start: 00:00.00
+Scene End: 00:08.36
+
+**MARTHA (Worried):**
+Start: (00:00.00) | End: (00:05.32)
+"Your brother paid off his debts in cash, Maya. All of Harrowmere is talking."
+
+**MAYA (Hurt):**
+Start: (00:05.32) | End: (00:08.36)
+"Where would Tobias get that kind of money?"
+
+SCENE 2
+Scene Heading: EXT. PIER - DAY
+Scene Start: 00:08.36
+Scene End: 00:21.72
+
+**ACTION:**
+Start: (00:08.36) | End: (00:10.86)
+Maya finds Tobias on the pier, phone to his ear.
+
+**MAYA (Furious):**
+Start: (00:10.86) | End: (00:15.80)
+"Listen to me, Tobiaz, put the phone down and tell me the truth."
+
+**TOBIAS (Breaking):**
+Start: (00:15.80) | End: (00:19.22)
+"Elian said if we sign, nobody else gets hurt."
+
+**CAMERA:**
+Start: (00:19.22) | End: (00:21.72)
+Over Tobias's shoulder, the black car rolls slowly past.

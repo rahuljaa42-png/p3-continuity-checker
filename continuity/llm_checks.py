@@ -75,14 +75,18 @@ def adjudicate(llm: LLM, flags: list[Flag], episodes: list[Episode], log: list) 
             continue
         groups = []
         for g in data.get("groups") or []:
-            vs = [v for v in g.get("variants", []) if v in f.variants]
-            bad = [v for v in g.get("variants", []) if v not in f.variants]
+            mapped = [_to_variant(v, f.variants) for v in g.get("variants", [])]
+            vs = list(dict.fromkeys(v for v in mapped if v))
+            bad = [v for v, m in zip(g.get("variants", []), mapped) if not m]
             if bad:
                 log.append({"step": "adjudicate", "flag": f.canonical, "reason": f"unknown variants {bad}"})
             if vs:
                 groups.append({**g, "variants": vs})
         f.llm_groups = groups  # type: ignore[attr-defined]
         errs = [g for g in groups if g.get("verdict") == "error" and len(g["variants"]) > 1]
+        if not groups:   # nothing usable came back: do not invent a verdict
+            f.verdict = "needs_review"
+            continue
         f.verdict = "error" if errs else ("intentional" if any(g.get("verdict") == "intentional" for g in groups)
                                           else "different_entity")
         if errs:
@@ -147,6 +151,14 @@ def facts(llm: LLM, episodes: list[Episode], log: list, window: int = 6) -> list
                 log.append({"step": "facts", "reason": "quote not found in script (dropped)",
                             "quote_a_found": ok_a, "quote_b_found": ok_b, "raw": it})
     return issues
+
+
+def _to_variant(name: str, variants) -> str | None:
+    """Map the model's 'Elias Varga' back to the flagged spelling 'Elias' (exact word match only)."""
+    if name in variants:
+        return name
+    hits = [w for w in re.findall(r"[A-Za-z]+", name) if w in variants]
+    return hits[0] if len(hits) == 1 else None
 
 
 def _int(x):

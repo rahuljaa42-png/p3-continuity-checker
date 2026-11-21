@@ -1,0 +1,37 @@
+EPISODE NUMBER: 6
+EPISODE LOGLINE: Covering a night shift at the Harrowmere clinic, Maya treats the man who calls himself Elian Ross.
+CONTINUITY NOTES: Maya is on duty as the clinic doctor.
+
+SCENE 1
+Scene Heading: INT. HARROWMERE CLINIC - NIGHT
+Scene Start: 00:00.00
+Scene End: 00:13.90
+
+**CAMERA:**
+Start: (00:00.00) | End: (00:02.50)
+A gurney crashes through the doors.
+
+**DR. MAYA (Professional):**
+Start: (00:02.50) | End: (00:05.92)
+"Pressure on the wound. Tell me your name, sir."
+
+**ELIAS (Weak):**
+Start: (00:05.92) | End: (00:08.58)
+"Elian Ross. I told you that already."
+
+**DR. MAYA (Cold):**
+Start: (00:08.58) | End: (00:13.90)
+"The harbour log says you took my father's boat out the night he died."
+
+SCENE 2
+Scene Heading: INT. OKAFOR HOUSE - BEDROOM - NIGHT
+Scene Start: 00:13.90
+Scene End: 00:20.58
+
+**ACTION:**
+Start: (00:13.90) | End: (00:16.40)
+Maya sits on her father's bed holding Dad's blue scarf, the one he wore the night he vanished.
+
+**MAYA (Whispering):**
+Start: (00:16.40) | End: (00:20.58)
+"I'm not leaving Harrowmere until I know what happened to you."

@@ -30,6 +30,7 @@ def run(inp, out, backend="rules", provider=None, model=None, api_key=None, base
         flags += L.discover(llm, flags, episodes, rejected)
         facts = L.facts(llm, episodes, rejected)
         meta["api_calls"] = llm.calls
+        meta["cached_calls"] = llm.cached_calls
     for i, f in enumerate(flags, 1):
         f.id = f"F{i:02d}"
     meta["seconds"] = round(time.time() - t0, 1)

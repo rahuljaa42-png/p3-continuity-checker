@@ -1,0 +1,25 @@
+{
+  "show": "synthetic_show",
+  "story": "Original story, no Kuku text: Dr. Maya Okafor returns to the harbour town of Harrowmere after her father drowns and exposes Elias Varga, a fixer posing as insurer Elian Ross.",
+  "items": [
+    {"id": "P1", "type": "place_drift", "is_error": true, "canonical": "Harrowmere", "variant": "Harrowmeer",
+     "episodes": [3], "where": "logline + dialogue", "detectable_by": ["rules", "llm"]},
+    {"id": "P2", "type": "place_drift", "is_error": true, "canonical": "Harrowmere", "variant": "Harromere",
+     "episodes": [5], "where": "action + dialogue", "detectable_by": ["rules", "llm"]},
+    {"id": "P3", "type": "place_drift", "is_error": true, "canonical": "Harrowmere", "variant": "Harrowmire",
+     "episodes": [7], "where": "dialogue", "detectable_by": ["rules", "llm"]},
+    {"id": "N1", "type": "name_misspelling", "is_error": true, "canonical": "Tobias", "variant": "Tobiaz",
+     "episodes": [4], "where": "dialogue (spoken once)", "detectable_by": ["rules", "llm"]},
+    {"id": "S1", "type": "speaker_label", "is_error": true, "canonical": "MAYA", "variant": "DR. MAYA",
+     "episodes": [6], "where": "speaker label", "detectable_by": ["rules"]},
+    {"id": "F1", "type": "prop_contradiction", "is_error": true, "object": "scarf", "keywords": ["scarf"],
+     "episodes": [2, 6], "detail": "Samuel's scarf is red in Ep 2 and blue in Ep 6",
+     "detectable_by": ["llm"]},
+    {"id": "A1", "type": "deliberate_alias", "is_error": false, "names": ["Elias", "Elian"],
+     "episodes": [3, 4, 5, 6, 7], "detail": "Elias Varga uses the fake name Elian Ross; revealed in Ep 7",
+     "expected": "not flagged, or flagged and cleared as intentional"},
+    {"id": "D1", "type": "different_people", "is_error": false, "names": ["Marta", "Martha"],
+     "episodes": [1, 2, 4, 5, 7, 8], "detail": "Marta Lind (harbourmaster) and Aunt Martha are two women; both appear in Ep 8",
+     "expected": "not flagged, or flagged and cleared as different_entity"}
+  ]
+}

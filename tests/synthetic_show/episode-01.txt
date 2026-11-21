@@ -1,0 +1,49 @@
+EPISODE NUMBER: 1
+EPISODE LOGLINE: Dr. Maya Okafor comes home for her father's funeral and finds the harbour of Harrowmere hiding something.
+CONTINUITY NOTES: Maya's father Samuel drowned three weeks ago. Aunt Martha runs the bakery.
+
+SCENE 1
+Scene Heading: EXT. HARROWMERE FERRY DOCK - DAY
+Scene Start: 00:00.00
+Scene End: 00:12.60
+
+**CAMERA:**
+Start: (00:00.00) | End: (00:02.50)
+Rain on the harbour wall. A ferry docks at Harrowmere.
+
+**ACTION:**
+Start: (00:02.50) | End: (00:05.00)
+MAYA steps off with one suitcase. AUNT MARTHA waits under an umbrella.
+
+**MARTHA (Warm, Tearful):**
+Start: (00:05.00) | End: (00:09.56)
+"You came back, Maya. Harrowmere hasn't been the same without your father."
+
+**MAYA (Tired):**
+Start: (00:09.56) | End: (00:12.60)
+"I'm only here until the funeral, Aunt Martha."
+
+SCENE 2
+Scene Heading: EXT. PIER - NIGHT
+Scene Start: 00:12.60
+Scene End: 00:29.76
+
+**CAMERA:**
+Start: (00:12.60) | End: (00:15.10)
+A black car idles at the end of the pier.
+
+**ACTION:**
+Start: (00:15.10) | End: (00:17.60)
+Inside, Elias Varga photographs Maya through the windscreen.
+
+**ELIAS (Cold, On Phone):**
+Start: (00:17.60) | End: (00:22.92)
+"The daughter is here. Tell them the Okafor house goes on sale this week."
+
+**TOBIAS (Angry):**
+Start: (00:22.92) | End: (00:25.96)
+"Maya! Someone broke into Dad's boat last night."
+
+**MAYA (Shocked):**
+Start: (00:25.96) | End: (00:29.76)
+"The Greyfin? Who would want an old fishing boat, Tobias?"

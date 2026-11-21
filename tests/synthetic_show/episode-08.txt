@@ -1,0 +1,37 @@
+EPISODE NUMBER: 8
+EPISODE LOGLINE: Marta Lind and Aunt Martha help Maya trap Elias Varga on the Greyfin.
+CONTINUITY NOTES: Marta is the harbourmaster; Martha is Maya's aunt. They are two different women.
+
+SCENE 1
+Scene Heading: EXT. HARBOUR - DAWN
+Scene Start: 00:00.00
+Scene End: 00:09.72
+
+**MARTA (Determined):**
+Start: (00:00.00) | End: (00:03.04)
+"The coastguard is waiting past the breakwater, Maya."
+
+**MARTHA (Fierce):**
+Start: (00:03.04) | End: (00:07.22)
+"And I've told every boat in Harrowmere to block the channel."
+
+**ACTION:**
+Start: (00:07.22) | End: (00:09.72)
+Elias steps onto the Greyfin, expecting to find Tobias alone.
+
+SCENE 2
+Scene Heading: EXT. GREYFIN DECK - DAWN
+Scene Start: 00:09.72
+Scene End: 00:21.50
+
+**TOBIAS (Steady):**
+Start: (00:09.72) | End: (00:14.28)
+"It's over, Elias. Marta has the log and Martha has your passport."
+
+**MAYA (Quiet):**
+Start: (00:14.28) | End: (00:17.70)
+"You can tell the police about my father yourself."
+
+**ELIAS (Defeated):**
+Start: (00:17.70) | End: (00:21.50)
+"Your father was never supposed to be on the boat."

@@ -14,9 +14,15 @@ from difflib import SequenceMatcher
 from .parser import Episode
 
 WORD_RE = re.compile(r"[A-Za-z][a-z]+(?:'s)?")
-HONORIFICS = {"LADY", "LORD", "SIR", "THE", "MR", "MRS", "MISS", "MASTER", "DAME", "YOUNG", "OLD"}
+HONORIFICS = {"LADY", "LORD", "SIR", "THE", "MR", "MRS", "MS", "MISS", "MASTER", "DAME", "YOUNG", "OLD",
+              "DR", "DOCTOR"}
+
 STOP = {"the", "and", "but", "you", "she", "his", "her", "him", "they", "what", "who", "oh", "ah",
         "god", "yes", "no", "none", "miss", "duke", "duchess", "lady", "lord", "king", "queen"}
+
+
+def _is_hon(w: str) -> bool:
+    return w.rstrip(".") in HONORIFICS   # "DR." and "MR." carry a period in speaker labels
 
 
 @dataclass
@@ -134,7 +140,7 @@ def speaker_label_flags(episodes: list[Episode]) -> list[Flag]:
         for b in ep.beats:
             if b.kind == "dialogue" and b.speaker:
                 raw = re.sub(r"\s*\((?:V\.O\.|O\.S\.|O\.C\.|CONT'D)\)", "", b.speaker.upper()).strip()
-                core = " ".join(w for w in raw.split() if w not in HONORIFICS)
+                core = " ".join(w for w in raw.split() if not _is_hon(w))
                 if core:
                     labels[core][raw].add(ep.number)
                     first.setdefault((core, raw), (ep.number, b.id, b.text))
@@ -143,7 +149,7 @@ def speaker_label_flags(episodes: list[Episode]) -> list[Flag]:
         if len(raws) < 2:
             continue
         # LADY X vs LORD X are two people; only flag "X" vs "LADY X" (one honorific set inside the other)
-        hon = {r: {w for w in r.split() if w in HONORIFICS} for r in raws}
+        hon = {r: {w.rstrip('.') for w in r.split() if _is_hon(w)} for r in raws}
         rs = list(raws)
         if not any(hon[a] < hon[b] or hon[b] < hon[a] for i, a in enumerate(rs) for b in rs[i + 1:]):
             continue
@@ -166,6 +172,16 @@ def verify_quote(episodes: dict[int, Episode], episode: int, quote: str) -> bool
 
     def norm(s):
         return re.sub(r"[\s\"“”'‘’]+", " ", s).strip().lower()
-    q = norm(quote)
+    # The fact prompt shows beats as "[Ep 3] NAME: line" and "[Ep 3] (action)", so models copy those
+    # wrappers; strip them (and leading/trailing ellipses), never the words themselves.
+    q = quote.strip()
+    q = re.sub(r"^\[Ep \d+\]\s*", "", q)
+    q = re.sub(r"^[A-Z][A-Z0-9 .'-]*(?:\([^)]*\))?:\s+", "", q)
+    q = re.sub(r"^(?:\.\.\.|…)\s*|\s*(?:\.\.\.|…)$", "", q).strip()
+    if q.startswith("(") and q.endswith(")"):
+        q = q[1:-1]
+    q = norm(q)
+    if not q:
+        return False
     hay = norm(" ".join([ep.logline, ep.continuity] + [b.text for b in ep.beats]))
     return q in hay

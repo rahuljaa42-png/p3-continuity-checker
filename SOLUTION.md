@@ -44,7 +44,24 @@ F06 (THE PRIEST / PRIEST) is trivial. Where it fails:
   luck, not judgement.
 - Rules cannot see prop drift (the book).
 
-The LLM steps target exactly these cases, but I could only test them with a mock model here.
+(Pack numbers predate the DR./MR. label fix below; the pack was not re-run.)
+
+**My own synthetic show** (`tests/synthetic_show/`, original 8-episode story, same format): 6 planted errors
+(3 spellings of the town, a name misspelled once in dialogue, MAYA vs DR. MAYA, a red scarf that turns blue) and
+2 traps (Elias posing as "Elian"; Marta and Martha, two different women).
+
+| backend | found | missed | false alarms | recall | precision |
+| --- | --- | --- | --- | --- | --- |
+| rules | 5 | scarf (LLM only) | Elias/Elian, Marta/Martha | 0.83 | 0.71 |
+| llm (Groq gpt-oss-120b) | 6 | none | 3 (below) | 1.00 | 0.67 |
+
+The LLM cleared both traps (alias → *intentional*, Marta/Martha → *different people*) and found the scarf. Its 3
+false alarms: two "discovered" groups that are first name + surname of one person (Elian/Ross, Marta/Lind), and a
+fact claim whose quotes are real but whose contradiction is not. Quote checking stops invented quotes, not wrong
+reasoning over real ones. The test exposed 3 bugs, now fixed: `DR.`/`MR.` labels were not seen as honorifics; the
+verifier dropped the true scarf finding because the model copied the prompt's `(action)` / `NAME:` wrappers; and
+adjudication lost the correct *intentional* verdict because the model answered with full names ("Elias Varga").
+Before the fixes: rules 0.67 recall / 0.67 precision, LLM 0.83 / 0.63 (same cached model answers).
 
 ## How I'd know it worked with a real team
 - Editor acceptance rate of flags (target above 70%).

@@ -1,0 +1,33 @@
+EPISODE NUMBER: 5
+EPISODE LOGLINE: Marta Lind shows Maya the harbour log that proves the Greyfin was tampered with.
+CONTINUITY NOTES: The log entry is signed with the cover name.
+
+SCENE 1
+Scene Heading: INT. HARBOUR OFFICE - NIGHT
+Scene Start: 00:00.00
+Scene End: 00:11.24
+
+**ACTION:**
+Start: (00:00.00) | End: (00:02.50)
+Storm lights flicker across Harromere as Marta unlocks a cabinet.
+
+**MARTA (Low):**
+Start: (00:02.50) | End: (00:08.20)
+"Someone signed the Greyfin out at two in the morning. The name is Elian Ross."
+
+**MAYA (Stunned):**
+Start: (00:08.20) | End: (00:11.24)
+"The same man who wants our house, Marta?"
+
+SCENE 2
+Scene Heading: EXT. HARBOUR - NIGHT
+Scene Start: 00:11.24
+Scene End: 00:17.54
+
+**CAMERA:**
+Start: (00:11.24) | End: (00:13.74)
+Headlights sweep the wet stones.
+
+**ELIAS (Menacing):**
+Start: (00:13.74) | End: (00:17.54)
+"You should leave Harromere before the weather turns, Dr. Okafor."

@@ -1,0 +1,33 @@
+EPISODE NUMBER: 7
+EPISODE LOGLINE: Aunt Martha finds a passport that names the stranger as Elias Varga.
+CONTINUITY NOTES: The passport is the first proof of his real name.
+
+SCENE 1
+Scene Heading: INT. BAKERY - NIGHT
+Scene Start: 00:00.00
+Scene End: 00:10.10
+
+**ACTION:**
+Start: (00:00.00) | End: (00:02.50)
+Martha spreads the contents of a stolen wallet across the counter.
+
+**MARTHA (Shaking):**
+Start: (00:02.50) | End: (00:06.68)
+"His passport says Elias Varga. There is no Elian Ross, Maya."
+
+**MAYA (Grim):**
+Start: (00:06.68) | End: (00:10.10)
+"Then everything he signed in Harrowmire is a lie."
+
+SCENE 2
+Scene Heading: EXT. CLIFF ROAD - NIGHT
+Scene Start: 00:10.10
+Scene End: 00:16.40
+
+**ELIAS (Threatening, On Phone):**
+Start: (00:10.10) | End: (00:13.90)
+"The doctor knows. Finish it before the sale goes through."
+
+**CAMERA:**
+Start: (00:13.90) | End: (00:16.40)
+The black car's headlights snap off.
