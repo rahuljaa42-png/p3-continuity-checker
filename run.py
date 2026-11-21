@@ -107,5 +107,17 @@ def main():
     print(f"fact issues: {len(facts)}, rejected LLM claims: {len(rej)}")
 
 
+def _under_streamlit() -> bool:
+    try:
+        from streamlit.runtime import exists
+        return exists()
+    except Exception:
+        return False
+
+
 if __name__ == "__main__":
-    main()
+    if _under_streamlit():   # deployed with run.py as the main file: show the web app instead of the CLI
+        import runpy
+        runpy.run_path(str(Path(__file__).with_name("app.py")), run_name="__main__")
+    else:
+        main()
