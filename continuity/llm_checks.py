@@ -71,6 +71,8 @@ def adjudicate(llm: LLM, flags: list[Flag], episodes: list[Episode], log: list) 
         try:
             data = llm.chat_json(SYSTEM, user, tag=f"adjudicate-{f.canonical}", mock_fn=_mock_adj(f))
         except LLMError as e:
+            if e.fatal:
+                raise
             f.note += f" (LLM adjudication failed: {e})"
             continue
         groups = []
@@ -105,6 +107,8 @@ def discover(llm: LLM, flags: list[Flag], episodes: list[Episode], log: list) ->
     try:
         data = llm.chat_json(SYSTEM, user, tag="discover", mock_fn=lambda u: {"groups": []})
     except LLMError as e:
+        if e.fatal:
+            raise
         log.append({"step": "discover", "reason": str(e)})
         return []
     out = []
@@ -124,11 +128,13 @@ def discover(llm: LLM, flags: list[Flag], episodes: list[Episode], log: list) ->
     return out
 
 
-def facts(llm: LLM, episodes: list[Episode], log: list, window: int = 6) -> list[dict]:
+def facts(llm: LLM, episodes: list[Episode], log: list, window: int = 3) -> list[dict]:
     eps = {e.number: e for e in episodes}
     issues = []
-    for i in range(0, len(episodes), window):
-        win = episodes[max(0, i - 1): i + window]   # 1-episode overlap so boundaries are compared
+    # 1-episode overlap so boundaries are compared
+    queue = [episodes[max(0, i - 1): i + window] for i in range(0, len(episodes), window)]
+    while queue:
+        win = queue.pop(0)
         parts = []
         for e in win:
             lines = [f"[Ep {e.number}] Logline: {e.logline}", f"[Ep {e.number}] Notes: {e.continuity}"]
@@ -136,9 +142,21 @@ def facts(llm: LLM, episodes: list[Episode], log: list, window: int = 6) -> list
                       for b in e.beats if b.kind in ("dialogue", "action")]
             parts.append("\n".join(lines))
         user = FACTS.format(first=win[0].number, last=win[-1].number, script="\n\n".join(parts))
+        print(f"  facts: episodes {win[0].number}-{win[-1].number} (~{len(user) // 4} tokens)", flush=True)
         try:
             data = llm.chat_json(SYSTEM, user, tag=f"facts-{win[0].number}", mock_fn=lambda u: {"issues": []})
         except LLMError as e:
+            if e.fatal:
+                raise
+            if "HTTP 413" in str(e) and len(win) > 2:
+                # Request bigger than the provider's per-request token limit (Groq free tier: 8k/min).
+                # Split the window in two (sharing one episode) instead of silently skipping it.
+                mid = len(win) // 2
+                queue[:0] = [win[:mid + 1], win[mid:]]
+                log.append({"step": "facts", "window": win[0].number,
+                            "reason": f"too large for the provider, split into Ep {win[0].number}-"
+                                      f"{win[mid].number} and Ep {win[mid].number}-{win[-1].number}"})
+                continue
             log.append({"step": "facts", "window": win[0].number, "reason": str(e)})
             continue
         for it in data.get("issues") or []:

@@ -53,7 +53,11 @@ DEFAULT_MODEL = os.environ.get("LLM_MODEL") or None
 
 
 class LLMError(RuntimeError):
-    pass
+    """fatal=True means retrying or skipping cannot help (bad key, unknown model): stop the run."""
+
+    def __init__(self, msg: str, fatal: bool = False):
+        super().__init__(msg)
+        self.fatal = fatal
 
 
 class LLM:
@@ -116,6 +120,8 @@ class LLM:
         body = {"model": self.model, "temperature": self.temperature,
                 "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
                 "response_format": {"type": "json_object"}}
+        if "gpt-oss" in self.model:          # reasoning model: keep its thinking short and cheap
+            body["reasoning_effort"] = "low"
         headers = {"Content-Type": "application/json"}
         if self.api_key:
             headers["Authorization"] = f"Bearer {self.api_key}"
@@ -138,10 +144,18 @@ class LLM:
                     for k in self.usage:
                         self.usage[k] += (data.get("usage") or {}).get(k, 0) or 0
                     return data["choices"][0]["message"]["content"] or ""
-                if r.status_code == 400 and "response_format" in body:
-                    body.pop("response_format")       # some models reject JSON mode
-                    continue
                 err = f"HTTP {r.status_code}: {r.text[:300]}"
+                if r.status_code == 400:
+                    optional = [k for k in ("reasoning_effort", "response_format") if k in body]
+                    hit = [k for k in optional if k in r.text] or optional[-1:]
+                    if hit:                          # some models reject an optional setting: drop it, retry
+                        body.pop(hit[0])
+                        continue
+                if r.status_code in (401, 403):
+                    raise LLMError(f"API key rejected ({r.status_code}). Check the key in keys.env. {err}", fatal=True)
+                if r.status_code == 404:
+                    raise LLMError(f"Model '{self.model}' is not available on this account. Set LLM_MODEL in "
+                                   f"keys.env to a model listed at console.groq.com/docs/models. {err}", fatal=True)
                 if r.status_code not in (429, 500, 502, 503, 504):
                     raise LLMError(err)
             ra = r.headers.get("retry-after") if "r" in locals() and r is not None else None

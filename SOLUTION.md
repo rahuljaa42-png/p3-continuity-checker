@@ -35,7 +35,7 @@ each with episodes, beat IDs and exact quotes, plus a find/replace fix list.
 - Output: `report.html` (timeline of variants, evidence), `continuity_flags.json`, `fix_list.csv` (27 per-episode
   find/replace rows, "needs review" until an editor or the LLM confirms).
 
-## Results on the pack (rules mode) and failures
+## Results on the pack and failures
 6 flags. F01 (estate cluster, 8 spellings, 54 mentions incl. Ashbridge) and F02 (Clarisse) are true errors; F03–F05 are real label drift;
 F06 (THE PRIEST / PRIEST) is trivial. Where it fails:
 - F01 wrongly merges **Ashbridge**, which is Catherine's surname.
@@ -44,7 +44,13 @@ F06 (THE PRIEST / PRIEST) is trivial. Where it fails:
   luck, not judgement.
 - Rules cannot see prop drift (the book).
 
-(Pack numbers predate the DR./MR. label fix below; the pack was not re-run.)
+Re-run after the DR./MR. fix below: the same 6 flags.
+
+**LLM mode on the pack (Groq gpt-oss-120b; partial: the free tier's 200k tokens/day ran out, so fact checks covered
+only Ep 6–12, 36–42 and 48–50).** It confirmed Clarisse as an error, and a fact check caught Ashwin vs Ashburn
+(Ep 39 vs 42), which rules miss. But it got the estate wrong: adjudication put each of the 8 spellings in its own
+"different entity" group (so Ashbridge was separated only along with everything else), while discovery merged all
+8 plus Ashcrofts into one estate. It did not find Ashwood. On this pack the LLM verdicts still need an editor.
 
 **My own synthetic show** (`tests/synthetic_show/`, original 8-episode story, same format): 6 planted errors
 (3 spellings of the town, a name misspelled once in dialogue, MAYA vs DR. MAYA, a red scarf that turns blue) and
@@ -70,5 +76,5 @@ Before the fixes: rules 0.67 recall / 0.67 precision, LLM 0.83 / 0.63 (same cach
 - Fewer viewer comments naming the wrong character.
 
 **Cost:** rules are free. LLM mode is about 15–20 calls (one per flag, one discovery, about 9 six-episode windows),
-roughly 100k input tokens, under $0.05 a show on a Flash-class model. Next step: write the confirmed names back
+roughly 100k input tokens: about $0.03 a show on GPT-OSS-120B via Groq ($0.15 / $0.75 per 1M tokens). Next step: write the confirmed names back
 into a series bible that is fed into the generation prompt, so drift is prevented rather than caught.
